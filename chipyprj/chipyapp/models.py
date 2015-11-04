@@ -15,43 +15,24 @@ class Complex(models.Model):
     module = models.ForeignKey('Module')
     area = models.ForeignKey('Area')
 
-class VideoPen(models.Model):
-    time = models.IntegerField()
-    pen = models.FloatField()
-    complex_code = models.ForeignKey('Complex')
+class DataType(models.Model):
+    video = models.CharField(max_length=10)
+    hsd = models.CharField(max_length=10)
+    cdv = models.CharField(max_length=10)
+    xhs = models.CharField(max_length=10)
 
-class HSDPen(models.Model):
-    time = models.IntegerField()
-    pen = models.FloatField()
+class Penetration(models.Model):
+    year = models.SmallIntegerField()
+    quarter = models.SmallIntegerField()
+    penetration = models.FloatField()
     complex_code = models.ForeignKey('Complex')
+    data_type = models.ForeignKey('DataType')
 
-class CDVPen(models.Model):
+class ActiveUnit(models.Model):
+    year = models.SmallIntegerField()
+    quarter = models.SmallIntegerField()
     time = models.IntegerField()
-    pen = models.FloatField()
+    active_unit = models.IntegerField()
     complex_code = models.ForeignKey('Complex')
-
-class XHSPen(models.Model):
-    time = models.IntegerField()
-    pen = models.FloatField()
-    complex_code = models.ForeignKey('Complex')
-
-class VideoActive(models.Model):
-    time = models.IntegerField()
-    active = models.IntegerField()
-    complex_code = models.ForeignKey('Complex')
-
-class HSDActive(models.Model):
-    time = models.IntegerField()
-    active = models.IntegerField()
-    complex_code = models.ForeignKey('Complex')
-
-class CDVActive(models.Model):
-    time = models.IntegerField()
-    active = models.IntegerField()
-    complex_code = models.ForeignKey('Complex')
-
-class XHSActive(models.Model):
-    time = models.IntegerField()
-    active = models.IntegerField()
-    complex_code = models.ForeignKey('Complex')
+    data_type = models.ForeignKey('DataType')
 
