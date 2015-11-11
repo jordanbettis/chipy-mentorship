@@ -19,21 +19,30 @@ class Complex(models.Model):
     module = models.ForeignKey('Module')
     area = models.ForeignKey('Area')
 
-class DataType(models.Model):
-    name = models.CharField(max_length=10)
+    def __unicode__(self):
+       return "{} {}".format(self.complex_name, self.complex_code)
+
+class LOB(models.Model):
+    lob = models.CharField(max_length=10)
+    def __unicode__(self):
+       return unicode(self.lob)
 
 class Penetration(models.Model):
     year = models.SmallIntegerField()
     quarter = models.SmallIntegerField()
     penetration = models.FloatField()
     complex_code = models.ForeignKey('Complex')
-    data_type = models.ForeignKey('DataType')
+    lob = models.ForeignKey('LOB')
+    def __unicode__(self):
+       return unicode(self.penetration)
 
 class ActiveUnit(models.Model):
     year = models.SmallIntegerField()
     quarter = models.SmallIntegerField()
-    time = models.IntegerField()
     active_unit = models.IntegerField()
     complex_code = models.ForeignKey('Complex')
-    data_type = models.ForeignKey('DataType')
+    lob = models.ForeignKey('LOB')
+
+    def __unicode__(self):
+       return unicode(self.active_unit)
 
