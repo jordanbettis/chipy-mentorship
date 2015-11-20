@@ -28,8 +28,8 @@ class LOB(models.Model):
        return unicode(self.lob)
 
 class Penetration(models.Model):
-    year = models.SmallIntegerField()
-    quarter = models.SmallIntegerField()
+    year = models.SmallIntegerField(db_index=True)
+    quarter = models.SmallIntegerField(db_index=True)
     penetration = models.FloatField()
     complex_code = models.ForeignKey('Complex')
     lob = models.ForeignKey('LOB')
@@ -37,8 +37,8 @@ class Penetration(models.Model):
        return unicode(self.penetration)
 
 class ActiveUnit(models.Model):
-    year = models.SmallIntegerField()
-    quarter = models.SmallIntegerField()
+    year = models.SmallIntegerField(db_index=True)
+    quarter = models.SmallIntegerField(db_index=True)
     active_unit = models.IntegerField()
     complex_code = models.ForeignKey('Complex')
     lob = models.ForeignKey('LOB')
