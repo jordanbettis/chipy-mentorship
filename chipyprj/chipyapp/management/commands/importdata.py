@@ -29,9 +29,9 @@ class Command(BaseCommand):
                   property_type_obj, _ = PropertyType.objects.get_or_create(service_status=row[1]['Property Type'])
 
               complex_obj, _  =  Complex.objects.get_or_create(
-                  complex_name = row[1]['Complex Name'],
+                  #complex_name = row[1]['Complex Name'],
                   complex_code = row[1]['Direct Complex Code'],
-                  hmc = row[1]['House Misc Code'],
+                  #hmc = row[1]['House Misc Code'],
                   unit = row[1]['Units'],
                   module = module_obj,
                   area = area_obj,

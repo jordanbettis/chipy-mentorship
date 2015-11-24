@@ -27,9 +27,9 @@ class Team(models.Model):
        return unicode(self.team)
 
 class Complex(models.Model):
-    complex_name = models.CharField(max_length=500, blank=True)
+    #complex_name = models.CharField(max_length=500, blank=True)
     complex_code = models.CharField(max_length=10)
-    hmc = models.CharField(max_length=4, blank=True)
+    #hmc = models.CharField(max_length=4, blank=True)
     unit = models.IntegerField()
     module = models.ForeignKey('Module')
     area = models.ForeignKey('Area')
