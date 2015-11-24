@@ -11,6 +11,21 @@ class Area(models.Model):
     def __unicode__(self):
        return unicode(self.area)
 
+class ServiceStatus(models.Model):
+    service_status = models.CharField(max_length=10)
+    def __unicode__(self):
+       return unicode(self.service_status)
+
+class PropertyType(models.Model):
+    property_type = models.CharField(max_length=10)
+    def __unicode__(self):
+       return unicode(self.property_type)
+
+class Team(models.Model):
+    team = models.CharField(max_length=10)
+    def __unicode__(self):
+       return unicode(self.team)
+
 class Complex(models.Model):
     complex_name = models.CharField(max_length=500, blank=True)
     complex_code = models.CharField(max_length=10)
@@ -18,6 +33,9 @@ class Complex(models.Model):
     unit = models.IntegerField()
     module = models.ForeignKey('Module')
     area = models.ForeignKey('Area')
+    service_status = models.ForeignKey('ServiceStatus')
+    property_type = models.ForeignKey('PropertyType')
+    team = models.ForeignKey('Team')
 
     def __unicode__(self):
        return "{} {}".format(self.complex_name, self.complex_code)
