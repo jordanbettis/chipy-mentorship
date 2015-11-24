@@ -17,7 +17,7 @@ class ServiceStatus(models.Model):
        return unicode(self.service_status)
 
 class PropertyType(models.Model):
-    property_type = models.CharField(max_length=10)
+    property_type = models.CharField(max_length=20)
     def __unicode__(self):
        return unicode(self.property_type)
 
@@ -33,9 +33,9 @@ class Complex(models.Model):
     unit = models.IntegerField()
     module = models.ForeignKey('Module')
     area = models.ForeignKey('Area')
-    service_status = models.ForeignKey('ServiceStatus')
-    property_type = models.ForeignKey('PropertyType')
-    team = models.ForeignKey('Team')
+    service_status = models.ForeignKey('ServiceStatus', null=True, blank=True)
+    property_type = models.ForeignKey('PropertyType',null=True, blank=True)
+    team = models.ForeignKey('Team',null=True, blank=True)
 
     def __unicode__(self):
        return "{} {}".format(self.complex_name, self.complex_code)
