@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
 from chipyapp import views
 
 urlpatterns = [
@@ -22,4 +24,4 @@ urlpatterns = [
    # url(r'^data/(?P<year>\d+)/(?P<quarter>\d+)', views.datatable),
     url(r'^data/', views.datatable),
     url(r'^chart/', views.chart),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
