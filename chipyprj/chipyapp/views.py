@@ -24,7 +24,12 @@ def datatable(request):
     return render(request, 'chipyapp/datatable.html', locals())
 
 def chart(request):
-    pen_data = LOB.objects.annotate(avg_pen=Avg('penetration__penetration'))
-    chart_data = json.dumps([{'LOB': i.lob,'Avg_Pen': i.avg_pen} for i in pen_data])
+    pen_data = []
+    for lob in LOB.objects.all():
+        lob_data = [lob.lob]
+        lob_result = Penetration.objects.values('quarter').annotate(avg_pen=Avg('penetration__penetration'))
+        for r in lob_result:
+            lob_result.append(r.avg_pen)
+    chart_data = json.dumps(pen_data)
     return render(request, 'chipyapp/chart.html', locals())
     
