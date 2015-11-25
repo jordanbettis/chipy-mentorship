@@ -24,7 +24,7 @@ class Command(BaseCommand):
               if row[1]['Type'] != 'nan':
                   service_status_obj, _ = ServiceStatus.objects.get_or_create(service_status=row[1]['Type'])
               if row[1]['Team'] != 'nan':
-                  team_obj, _ = Team.objects.get_or_create(service_status=row[1]['Team'])
+                  team_obj, _ = Team.objects.get_or_create(team=row[1]['Team'])
               if row[1]['Property Type'] != 'nan':
                   property_type_obj, _ = PropertyType.objects.get_or_create(service_status=row[1]['Property Type'])
 
