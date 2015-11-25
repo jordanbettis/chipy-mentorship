@@ -33,9 +33,9 @@ class Complex(models.Model):
     unit = models.IntegerField()
     module = models.ForeignKey('Module')
     area = models.ForeignKey('Area')
-    service_status = models.ForeignKey('ServiceStatus', null=True, blank=True)
-    property_type = models.ForeignKey('PropertyType',null=True, blank=True)
-    team = models.ForeignKey('Team',null=True, blank=True)
+    # service_status = models.ForeignKey('ServiceStatus', null=True, blank=True)
+    # property_type = models.ForeignKey('PropertyType',null=True, blank=True)
+    # team = models.ForeignKey('Team',null=True, blank=True)
 
     def __unicode__(self):
        return "{} {}".format(self.complex_name, self.complex_code)
