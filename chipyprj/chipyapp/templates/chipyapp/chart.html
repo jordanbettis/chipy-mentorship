@@ -11,7 +11,7 @@
 <script>
     var chart = c3.generate({
     data:{
-        columns:{{ chart_data }}
+        columns:{{ chart_data|safe }}
     }
     })
 </script>
