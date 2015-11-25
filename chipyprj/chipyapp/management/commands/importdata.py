@@ -26,7 +26,7 @@ class Command(BaseCommand):
               if row[1]['Team'] != 'nan':
                   team_obj, _ = Team.objects.get_or_create(team=row[1]['Team'])
               if row[1]['Property Type'] != 'nan':
-                  property_type_obj, _ = PropertyType.objects.get_or_create(service_status=row[1]['Property Type'])
+                  property_type_obj, _ = PropertyType.objects.get_or_create(property_type=row[1]['Property Type'])
 
               complex_obj, _  =  Complex.objects.get_or_create(
                   #complex_name = row[1]['Complex Name'],
