@@ -29,7 +29,7 @@ def chart(request):
         lob_data = [lob.lob]
         lob_result = Penetration.objects.filter(lob=lob).values('quarter').annotate(avg_pen=Avg('penetration'))
         for r in lob_result:
-            lob_data.append(r.avg_pen)
+            lob_data.append(r['avg_pen'])
         pen_data.append(lob_data)
     chart_data = json.dumps(pen_data)
     return render(request, 'chipyapp/chart.html', locals())
