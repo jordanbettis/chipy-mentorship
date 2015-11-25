@@ -23,6 +23,7 @@
     var chart = c3.generate({
     bindto: '#chart',
     data:{
+        x: 'x',
         columns:{{ chart_data|safe }}
     }
     })
