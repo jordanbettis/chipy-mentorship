@@ -14,12 +14,31 @@
 <title>Chart</title>
 </head>
 <body>
-<h1> Chart </h1>
 <div class="container-fluid">
-    <div id='chart'>
+    <div class="col-md-6">
+        <h1> Chart </h1>
+        <div id='chart'>
+        </div>
     </div>
-</div>
+    <div class="col-md-6">
+        <h2>Filter</h2>
+        {% if form.errors %}
+           <div class="bg-danger">
+               Error {{form.errors}}
+            </div>
+        {% endif %}
 
+        <form action = "" method="post">
+            <table>
+               {{form.as_table}}
+            </table>
+            {% csrf_token %}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+
+</div>
 <div class="container-fluid">
     <h2>server output</h2>
     <pre> {{ chart_data }} </pre>

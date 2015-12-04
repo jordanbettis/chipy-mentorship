@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Module, Area, Complex, LOB, Penetration, ActiveUnit
-from .forms import DatatableForm
+from .forms import DatatableForm, ChartFilterForm
 from django.db.models import Avg 
 import json
 
@@ -24,6 +24,14 @@ def datatable(request):
     return render(request, 'chipyapp/datatable.html', locals())
 
 def chart(request):
+    if request.method == 'POST':
+        form = ChartFilterForm(request.POST)
+        if form.is_valid():
+            pass
+    else:
+        form = ChartFilterForm()
+
+
     pen_data = []
     quarters = set()
     for lob in LOB.objects.all():
@@ -37,4 +45,6 @@ def chart(request):
     pen_data.append(['x']+list(quarters))
     chart_data = json.dumps(pen_data, indent=4)
     return render(request, 'chipyapp/chart.html', locals())
+
+
     

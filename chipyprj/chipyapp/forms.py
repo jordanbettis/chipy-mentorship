@@ -1,4 +1,5 @@
 from django import forms
+from models import Module
 
 class DatatableForm(forms.Form):
     sorting = forms.CharField(required = False)
@@ -23,3 +24,6 @@ class DatatableForm(forms.Form):
            raise forms.ValidationError("Bad LOB filter field!")
         return data
 
+
+class ChartFilterForm(forms.Form):
+    filter_module = forms.ModelMultipleChoiceField(queryset=Module.objects.all())

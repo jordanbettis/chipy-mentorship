@@ -36,7 +36,6 @@ class Complex(models.Model):
     service_status = models.ForeignKey('ServiceStatus', null=True, blank=True)
     property_type = models.ForeignKey('PropertyType',null=True, blank=True)
     team = models.ForeignKey('Team',null=True, blank=True)
-
     def __unicode__(self):
        return "{}".format(self.complex_code)
 
@@ -60,7 +59,6 @@ class ActiveUnit(models.Model):
     active_unit = models.IntegerField()
     complex_code = models.ForeignKey('Complex')
     lob = models.ForeignKey('LOB')
-
     def __unicode__(self):
        return unicode(self.active_unit)
 
