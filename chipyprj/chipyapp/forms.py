@@ -35,4 +35,4 @@ class ChartFilterForm(forms.Form):
         label = "Please Select Area(s)",
         queryset=Area.objects.all(),
         required=False,
-        widget=forms.CheckboxSelectMultiple(attrs={"class": "form-control"}))
+        widget=forms.SelectMultiple(attrs={"class": "form-control"}))
