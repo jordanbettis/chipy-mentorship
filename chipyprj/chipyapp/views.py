@@ -35,6 +35,6 @@ def chart(request):
             quarters.add(r['quarter'])
         pen_data.append(lob_data)
     pen_data.append(['x']+list(quarters))
-    chart_data = json.dumps(pen_data)
+    chart_data = json.dumps(pen_data, indent=4)
     return render(request, 'chipyapp/chart.html', locals())
     
