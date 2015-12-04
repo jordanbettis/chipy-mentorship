@@ -31,7 +31,7 @@ def chart(request):
             cd = form.cleaned_data
             module_selected = cd['filter_module']
             if module_selected.exists():
-                form_filters['module__in'] = module_selected
+                form_filters['complex_code__module__in'] = module_selected
 
     else:
         form = ChartFilterForm()
