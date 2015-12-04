@@ -24,10 +24,15 @@ def datatable(request):
     return render(request, 'chipyapp/datatable.html', locals())
 
 def chart(request):
+    form_filters = {}
     if request.method == 'POST':
         form = ChartFilterForm(request.POST)
         if form.is_valid():
-            pass
+            cd = form.cleaned_data
+            module_selected = cd['filter_module']
+            if module_selected.exists():
+                form_filters['module__in'] = module_selected
+
     else:
         form = ChartFilterForm()
 
@@ -37,7 +42,10 @@ def chart(request):
     for lob in LOB.objects.all():
 
         lob_data = [lob.lob]
-        lob_result = Penetration.objects.filter(lob=lob).values('quarter').annotate(avg_pen=Avg('penetration'))
+        lob_result = Penetration.objects.filter(lob=lob)
+        if form_filters:
+            lob_result = lob_result.filter(**form_filters)
+        lob_result.values('quarter').annotate(avg_pen=Avg('penetration'))
         for r in lob_result:
             lob_data.append(r['avg_pen'])
             quarters.add(r['quarter'])
