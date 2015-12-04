@@ -22,7 +22,7 @@
     </div>
     <div class="col-md-6">
         <h2>Filter</h2>
-        {% if form.errors %}
+        {% if form.non_field_errors %}
            <div class="bg-danger">
                Error {{form.errors}}
             </div>
@@ -36,7 +36,7 @@
                            Error {{field.errors}}
                         </div>
                     {% endif %}
-                    <label for= "{{field.id_for_label}}"> Please Select Module(s) </label>
+                    <label for= "{{field.id_for_label}}"> {{field.label}} </label>
                     {{ field }}
                 </div>
             {% endfor %}
