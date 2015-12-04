@@ -29,9 +29,15 @@
         {% endif %}
 
         <form action = "" method="post">
-            <table>
-               {{form.as_table}}
-            </table>
+            {% for field in form %}
+                <div class="form-group">
+                    {% if field.error %}
+                    <label for= "{{field.id_for_label}}"> Module </label>
+                    {{ field }}
+
+                </div>
+
+
             {% csrf_token %}
             <input type="submit" value="Submit">
         </form>

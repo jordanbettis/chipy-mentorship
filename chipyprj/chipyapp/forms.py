@@ -26,4 +26,6 @@ class DatatableForm(forms.Form):
 
 
 class ChartFilterForm(forms.Form):
-    filter_module = forms.ModelMultipleChoiceField(queryset=Module.objects.all())
+    filter_module = forms.ModelMultipleChoiceField(
+        queryset=Module.objects.all(),
+        widget=forms.SelectMultiple(attrs={"class": "form-control"}))
