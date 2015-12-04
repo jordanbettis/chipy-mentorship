@@ -1,5 +1,5 @@
 from django import forms
-from models import Module
+from models import Module, Area
 
 class DatatableForm(forms.Form):
     sorting = forms.CharField(required = False)
@@ -28,4 +28,7 @@ class DatatableForm(forms.Form):
 class ChartFilterForm(forms.Form):
     filter_module = forms.ModelMultipleChoiceField(
         queryset=Module.objects.all(),
+        widget=forms.SelectMultiple(attrs={"class": "form-control"}))
+    filter_area = forms.ModelMultipleChoiceField(
+        queryset=Area.objects.all(),
         widget=forms.SelectMultiple(attrs={"class": "form-control"}))

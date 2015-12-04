@@ -30,12 +30,15 @@ def chart(request):
         if form.is_valid():
             cd = form.cleaned_data
             module_selected = cd['filter_module']
+            area_selected = cd['filter_area']
             if module_selected.exists():
                 form_filters['complex_code__module__in'] = module_selected
+            if area_selected.exists():
+                form_filters['complex_code__area__in'] = area_selected
+
 
     else:
         form = ChartFilterForm()
-
 
     pen_data = []
     quarters = set()
