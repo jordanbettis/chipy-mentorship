@@ -48,7 +48,7 @@ def chart(request):
         lob_result = Penetration.objects.filter(lob=lob)
         if form_filters:
             lob_result = lob_result.filter(**form_filters)
-        lob_result = lob_result.values('quarter').annotate(avg_pen=Avg('penetration'))
+        lob_result = lob_result.values('quarter').annotate(avg_pen=Avg('penetration')).order_by('quarter')
         for r in lob_result:
             lob_data.append(r['avg_pen'])
             quarters.add(r['quarter'])
