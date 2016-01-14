@@ -11,30 +11,41 @@
 <h3><a href="{% url 'dataform' %}">Return</a></h3>
 
 <div class="pull-right">
-    <a href="{% url 'datatable' %}?{{firstqs}}">&laquo; First Page &laquo;</a>
+    <a href="{% url 'datatable' %}?{{firstqs}}">&laquo; &laquo; First Page </a>
     {% if previouscd %}
-        <a href="{% url 'datatable' %}?{{previousqs}}">&laquo; Previous &laquo;</a>
+        <a href="{% url 'datatable' %}?{{previousqs}}">&laquo; &laquo;Previous </a>
     {% endif %}
     You are on page {{page_data.number}} of {{paginator.num_pages}}
     {% if nextcd %}
-        <a href="{% url 'datatable' %}?{{nextqs}}">&raquo; Next &raquo;</a>
+        <a href="{% url 'datatable' %}?{{nextqs}}">Next &raquo; &raquo; </a>
     {% endif %}
-    <a href="{% url 'datatable' %}?{{lastqs}}">&raquo; Last Page &raquo;</a>
+    <a href="{% url 'datatable' %}?{{lastqs}}"> Last Page &raquo; &raquo;</a>
 </div>
 
 <table class="table table-striped">
 <tr>
-<th>Complex Code</th>
-<th>Penetration</th>
-<th>LOB</th>
+    <th>Team</th>
+    <th>Module</th>
+    <th>Complex Code</th>
+    <th>Service Status</th>
+    <th>Area</th>
+    <th>Unit</th>
+    <th>Penetration</th>
+    <th>Property Type</th>
+    <th>LOB</th>
 </tr>
 
 {%for row in page_data.object_list %}
-
     <tr>
-    <td> {{row.complex_code.complex_code}} </td>
-    <td> {{row.penetration}} </td>
-    <td> {{row.lob}} </td> 
+        <td> {{row.team.team}} </td>
+        <td> {{row.module.module_number}} </td>
+        <td> {{row.complex_code.complex_code}} </td>
+        <td> {{row.service_status.service_status}} </td>
+        <td> {{row.area.area}} </td>
+        <td> {{row.unit}} </td>
+        <td> {{row.penetration}} </td>
+        <td> {{row.property_type.property_type}} </td>
+        <td> {{row.lob}} </td>
     </tr>
 {% endfor %}
 </table>
