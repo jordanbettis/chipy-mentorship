@@ -12,11 +12,11 @@
 
 <div>
     {% if previouscd %}
-        <a href="{% url 'datatable' %}?{{previousqs}}">&laquo; Previous &raquo;</a>
+        <a href="{% url 'datatable' %}?{{previousqs}}">&laquo; Previous &laquo;</a>
     {% endif %}
     You are on page {{page_data.number}} of {{paginator.num_pages}}
     {% if nextcd %}
-        <a href="{% url 'datatable' %}?{{nextqs}}">&laquo; Next &raquo;</a>
+        <a href="{% url 'datatable' %}?{{nextqs}}">&raquo; Next &raquo;</a>
     {% endif %}
 
 </div>
