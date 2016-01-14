@@ -4,8 +4,12 @@ from models import Module, Area
 class DatatableForm(forms.Form):
     sorting = forms.CharField(required = False)
     filter_lob = forms.CharField(required = False)
-    filter_year= forms.IntegerField(required = False, max_value=2020, min_value=2010)
-    filter_quarter= forms.IntegerField(required = False, max_value=4, min_value=1)
+    filter_year = forms.IntegerField(required = False, max_value=2020, min_value=2010)
+    filter_quarter = forms.IntegerField(required = False, max_value=4, min_value=1)
+    filter_module = forms.IntegerField()
+    filter_type = forms.CharField(required = False)
+    filter_team = forms.CharField(required = False)
+    filter_area = forms.CharField(required = False)
     num_line = forms.IntegerField()
 
     def clean_sorting(self):
@@ -24,6 +28,26 @@ class DatatableForm(forms.Form):
            raise forms.ValidationError("Bad LOB filter field!")
         return data
 
+    def clean_filter_type(self):
+        data = self.cleaned_data['filter_type']
+        valid_list = ['Bulk','Retail','',None]
+        if data not in valid_list:
+           raise forms.ValidationError("Bad Service Type filter field!")
+        return data
+
+    def clean_filter_team(self):
+        data = self.cleaned_data['filter_team']
+        valid_list = ['Team 1','Team 2','',None]
+        if data not in valid_list:
+           raise forms.ValidationError("Bad Team filter field!")
+        return data
+
+    def clean_filter_area(self):
+        data = self.cleaned_data['filter_area']
+        valid_list = ['City','North','West','South','',None]
+        if data not in valid_list:
+           raise forms.ValidationError("Bad Team filter field!")
+        return data
 
 class ChartFilterForm(forms.Form):
     filter_module = forms.ModelMultipleChoiceField(
