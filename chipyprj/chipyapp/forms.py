@@ -19,7 +19,7 @@ class DatatableForm(forms.Form):
   
     def clean_filter_lob(self):
         data = self.cleaned_data['filter_lob']
-        valid_list = ['Video', 'HSD','CDV','XHS','',None]
+        valid_list = ['TV', 'Internet','Voice','Home','',None]
         if data not in valid_list:
            raise forms.ValidationError("Bad LOB filter field!")
         return data
