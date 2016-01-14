@@ -9,7 +9,18 @@
 <body>
 <h1> Data Table sorting by {{ sorting }}</h1>
 <h3><a href="{% url 'dataform' %}">Return</a></h3>
-<div> You are on page {{page_data.number}} of {{paginator.num_pages}} </div>
+
+<div>
+    {% if previouscd %}
+        <a href="{% url 'datatable' %}?{{previousqs}}">&laquo; Previous &raquo;</a>
+    {% endif %}
+    You are on page {{page_data.number}} of {{paginator.num_pages}}
+    {% if nextcd %}
+        <a href="{% url 'datatable' %}?{{nextqs}}">&laquo; Next &raquo;</a>
+    {% endif %}
+
+</div>
+
 <table class="table table-striped">
 <tr>
 <th>Complex Code</th>

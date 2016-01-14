@@ -40,7 +40,14 @@ def datatable(request):
         page_data = paginator.page(1)
     except EmptyPage:
         page_data = paginator.page(paginator.num_pages)
-
+    if page_data.has_previous():
+        previouscd = cd.copy()
+        previouscd['page'] = page_data.previous_page_number()
+        previousqs = urlencode(previouscd)
+    if page_data.has_next():
+        nextcd = cd.copy()
+        nextcd['page'] = page_data.next_page_number()
+        nextqs = urlencode(nextcd)
 
     return render(request, 'chipyapp/datatable.html', locals())
 
