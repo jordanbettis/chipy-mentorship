@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1> Data Table sorting by {{ sorting }}</h1>
-<h2><a href="{% url 'dataform' %}">Return</a></h2>
+<h3><a href="{% url 'dataform' %}">Return</a></h3>
 <table class="table table-striped">
 <tr>
 <th>Complex Code</th>
@@ -23,6 +23,6 @@
     <td> {{row.lob}} </td> 
     </tr>
 {% endfor %}
-</ul>
+</table>
 </body>
 </html>
