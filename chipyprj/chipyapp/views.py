@@ -4,6 +4,8 @@ from .forms import DatatableForm, ChartFilterForm
 from django.db.models import Avg 
 import json
 
+
+
 def datatable(request):
     if request.method == 'POST':
          form = DatatableForm(request.POST)
@@ -56,6 +58,3 @@ def chart(request):
     pen_data.append(['x']+list(quarters))
     chart_data = json.dumps(pen_data, indent=4)
     return render(request, 'chipyapp/chart.html', locals())
-
-
-    
