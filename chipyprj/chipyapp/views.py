@@ -6,6 +6,7 @@ import json
 from urllib import urlencode
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def dataform(request):
     if request.method == 'POST':
@@ -32,7 +33,15 @@ def datatable(request):
     if cd.get('filter_quarter'):
         pen_data = pen_data.filter(quarter = cd['filter_quarter'])
     pen_data = pen_data.order_by(sorting)
-    pen_data = pen_data[:cd['num_line']]
+    paginator = Paginator(pen_data, cd.get("num_line", 50))
+    try:
+        page_data = paginator.page(cd.get("page",1))
+    except PageNotAnInteger:
+        page_data = paginator.page(1)
+    except EmptyPage:
+        page_data = paginator.page(paginator.num_pages)
+
+
     return render(request, 'chipyapp/datatable.html', locals())
 
 def chart(request):

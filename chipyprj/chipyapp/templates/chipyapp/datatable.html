@@ -9,6 +9,7 @@
 <body>
 <h1> Data Table sorting by {{ sorting }}</h1>
 <h3><a href="{% url 'dataform' %}">Return</a></h3>
+<div> You are on page {{page_data.number}} </div>
 <table class="table table-striped">
 <tr>
 <th>Complex Code</th>
@@ -16,7 +17,8 @@
 <th>LOB</th>
 </tr>
 
-{%for row in pen_data %}
+{%for row in page_data.object_list %}
+
     <tr>
     <td> {{row.complex_code.complex_code}} </td>
     <td> {{row.penetration}} </td>
