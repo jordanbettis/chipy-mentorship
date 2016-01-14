@@ -37,14 +37,14 @@
 
 {%for row in page_data.object_list %}
     <tr>
-        <td> {{row.team.team}} </td>
-        <td> {{row.module.module_number}} </td>
+        <td> {{row.complex_code.team}} </td>
+        <td> {{row.complex_code.module_number}} </td>
         <td> {{row.complex_code.complex_code}} </td>
-        <td> {{row.service_status.service_status}} </td>
-        <td> {{row.area.area}} </td>
+        <td> {{row.complex_code.service_status}} </td>
+        <td> {{row.complex_code.area}} </td>
         <td> {{row.unit}} </td>
         <td> {{row.penetration}} </td>
-        <td> {{row.property_type.property_type}} </td>
+        <td> {{row.complex_code.property_type}} </td>
         <td> {{row.lob}} </td>
     </tr>
 {% endfor %}
