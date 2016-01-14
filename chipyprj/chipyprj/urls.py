@@ -23,7 +23,8 @@ from django.views.generic import TemplateView
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
    # url(r'^data/(?P<year>\d+)/(?P<quarter>\d+)', views.datatable),
-    url(r'^data/', views.datatable, name='data'),
+    url(r'^datatable/', views.datatable, name='datatable'),
+    url(r'^dataform/', views.dataform, name='dataform'),
     url(r'^chart/', views.chart, name='chart'),
     url(r'', TemplateView.as_view(template_name = "chipyapp/index.html"))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
