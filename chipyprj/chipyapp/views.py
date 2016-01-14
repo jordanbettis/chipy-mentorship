@@ -48,6 +48,12 @@ def datatable(request):
         nextcd = cd.copy()
         nextcd['page'] = page_data.next_page_number()
         nextqs = urlencode(nextcd)
+    firstcd = cd.copy()
+    firstcd['page'] = paginator.page(1)
+    firstqs = urlencode(firstcd)
+    lastcd = cd.copy()
+    lastcd['page'] = paginator.num_pages
+    lastqs = urlencode(lastcd)
 
     return render(request, 'chipyapp/datatable.html', locals())
 

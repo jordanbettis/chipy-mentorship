@@ -11,6 +11,7 @@
 <h3><a href="{% url 'dataform' %}">Return</a></h3>
 
 <div class="pull-right">
+    <a href="{% url 'datatable' %}?{{firstqs}}">&laquo; 1 &laquo;</a>
     {% if previouscd %}
         <a href="{% url 'datatable' %}?{{previousqs}}">&laquo; Previous &laquo;</a>
     {% endif %}
@@ -18,7 +19,7 @@
     {% if nextcd %}
         <a href="{% url 'datatable' %}?{{nextqs}}">&raquo; Next &raquo;</a>
     {% endif %}
-
+    <a href="{% url 'datatable' %}?{{lastqs}}">&raquo; Last Page &raquo;</a>
 </div>
 
 <table class="table table-striped">
@@ -37,5 +38,17 @@
     </tr>
 {% endfor %}
 </table>
+
+<div class="pull-right">
+    {% if previouscd %}
+        <a href="{% url 'datatable' %}?{{previousqs}}">&laquo; Previous &laquo;</a>
+    {% endif %}
+    You are on page {{page_data.number}} of {{paginator.num_pages}}
+    {% if nextcd %}
+        <a href="{% url 'datatable' %}?{{nextqs}}">&raquo; Next &raquo;</a>
+    {% endif %}
+
+</div>
+
 </body>
 </html>
