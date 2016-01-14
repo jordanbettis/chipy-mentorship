@@ -17,7 +17,7 @@ def dataform(request):
             rurl = reverse('datatable')
             return HttpResponseRedirect("{}?{}".format(rurl,urlencode(query)))
     else:
-        form = DatatableForm(initial={"num_line":50})
+        form = DatatableForm(initial={"num_line":50, "quater": "", "year":"" })
     return render(request, 'chipyapp/dataform.html', locals())
 
 def datatable(request):
