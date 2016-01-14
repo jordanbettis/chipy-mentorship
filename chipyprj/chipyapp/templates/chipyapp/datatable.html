@@ -9,7 +9,7 @@
 <body>
 <h1> Data Table sorting by {{ sorting }}</h1>
 <h3><a href="{% url 'dataform' %}">Return</a></h3>
-<div> You are on page {{page_data.number}} </div>
+<div> You are on page {{page_data.number}} of {{paginator.num_pages}} </div>
 <table class="table table-striped">
 <tr>
 <th>Complex Code</th>
