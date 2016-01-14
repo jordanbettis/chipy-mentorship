@@ -10,7 +10,7 @@
 <h1> Data Table sorting by {{ sorting }}</h1>
 <h3><a href="{% url 'dataform' %}">Return</a></h3>
 
-<div>
+<div class="pull-right">
     {% if previouscd %}
         <a href="{% url 'datatable' %}?{{previousqs}}">&laquo; Previous &laquo;</a>
     {% endif %}
