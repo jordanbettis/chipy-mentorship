@@ -14,6 +14,7 @@ def dataform(request):
             cd = form.cleaned_data
             query = {'page': 1}
             query.update(cd)
+            query = {k:v for k,v in query.items() if v is not None}
             rurl = reverse('datatable')
             return HttpResponseRedirect("{}?{}".format(rurl,urlencode(query)))
     else:
@@ -24,11 +25,11 @@ def datatable(request):
     cd = request.GET
     sorting = cd['sorting']
     pen_data = Penetration.objects.select_related('complex_code')
-    if cd['filter_lob']:
+    if cd.get('filter_lob'):
         pen_data = pen_data.filter(lob__lob = cd['filter_lob'])
-    if cd['filter_year']:
+    if cd.get('filter_year'):
         pen_data = pen_data.filter(year = cd['filter_year'])
-    if cd['filter_quarter']:
+    if cd.get('filter_quarter'):
         pen_data = pen_data.filter(quarter = cd['filter_quarter'])
     pen_data = pen_data.order_by(sorting)
     pen_data = pen_data[:cd['num_line']]
