@@ -6,7 +6,7 @@ class DatatableForm(forms.Form):
     filter_lob = forms.CharField(required = False)
     filter_year = forms.IntegerField(required = False, max_value=2020, min_value=2010)
     filter_quarter = forms.IntegerField(required = False, max_value=4, min_value=1)
-    filter_module = forms.IntegerField()
+#    filter_module = forms.IntegerField()
     filter_type = forms.CharField(required = False)
     filter_team = forms.CharField(required = False)
     filter_area = forms.CharField(required = False)

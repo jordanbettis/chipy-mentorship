@@ -32,8 +32,8 @@ def datatable(request):
         pen_data = pen_data.filter(year = cd['filter_year'])
     if cd.get('filter_quarter'):
         pen_data = pen_data.filter(quarter = cd['filter_quarter'])
-    if cd.get('filter_module'):
-        pen_data = pen_data.filter(quarter = cd['filter_module'])
+#    if cd.get('filter_module'):
+#        pen_data = pen_data.filter(quarter = cd['filter_module'])
     if cd.get('filter_type'):
         pen_data = pen_data.filter(quarter = cd['filter_type'])
     if cd.get('filter_team'):
